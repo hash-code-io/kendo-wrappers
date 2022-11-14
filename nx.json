@@ -3,15 +3,28 @@
   "npmScope": "kendo-wrappers",
   "tasksRunnerOptions": {
     "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e",
+          "component-test"
+        ]
+      }
+    },
+    "cloud": {
       "runner": "@nrwl/nx-cloud",
       "options": {
         "cacheableOperations": [
           "build",
           "lint",
           "test",
-          "e2e"
+          "e2e",
+          "component-test"
         ],
-        "accessToken": "NjY5NTI0ZWEtOWNlYi00NDI0LWFiMjktYzNlMTBjNGRhZTg2fHJlYWQtd3JpdGU="
+        "accessToken": ""
       }
     }
   },
@@ -67,13 +80,23 @@
       "style": "scss",
       "linter": "eslint",
       "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
+      "e2eTestRunner": "cypress",
+      "inlineStyle": true,
+      "inlineTemplate": true,
+      "prefix": "kendo-wrappers",
+      "skipTests": true,
+      "strict": true,
+      "tags": "type:app"
     },
     "@nrwl/angular:library": {
       "linter": "eslint",
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest",
+      "prefix": "kendo-wrappers",
+      "strict": true
     },
     "@nrwl/angular:component": {
+      "changeDetection": "OnPush",
+      "displayBlock": true,
       "style": "scss"
     }
   },
