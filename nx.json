@@ -33,39 +33,21 @@
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "production",
-        "^production"
-      ]
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     },
     "test": {
-      "inputs": [
-        "default",
-        "^production",
-        "{workspaceRoot}/jest.preset.js"
-      ]
+      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
     },
     "e2e": {
-      "inputs": [
-        "default",
-        "^production"
-      ]
+      "inputs": ["default", "^production"]
     },
     "lint": {
-      "inputs": [
-        "default",
-        "{workspaceRoot}/.eslintrc.json"
-      ]
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
     }
   },
   "namedInputs": {
-    "default": [
-      "{projectRoot}/**/*",
-      "sharedGlobals"
-    ],
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
       "default",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
@@ -86,7 +68,7 @@
       "e2eTestRunner": "cypress",
       "inlineStyle": true,
       "inlineTemplate": true,
-      "prefix": "kendo-wrappers",
+      "prefix": "hash-code",
       "skipTests": true,
       "strict": true,
       "tags": "type:app"
@@ -94,13 +76,13 @@
     "@nrwl/angular:library": {
       "linter": "eslint",
       "unitTestRunner": "jest",
-      "prefix": "kendo-wrappers",
+      "prefix": "hash-code",
       "strict": true
     },
     "@nrwl/angular:component": {
+      "style": "scss",
       "changeDetection": "OnPush",
-      "displayBlock": true,
-      "style": "scss"
+      "displayBlock": true
     }
   },
   "defaultProject": "example-app"
