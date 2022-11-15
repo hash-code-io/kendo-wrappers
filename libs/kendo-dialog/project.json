@@ -7,7 +7,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/dist/{projectRoot}"
+      ],
       "options": {
         "project": "libs/kendo-dialog/ng-package.json"
       },
@@ -23,7 +25,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "libs/kendo-dialog/jest.config.ts",
         "passWithNoTests": true
@@ -37,7 +41,18 @@
           "libs/kendo-dialog/**/*.html"
         ]
       }
+    },
+    "component-test": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "libs/kendo-dialog/cypress.config.ts",
+        "testingType": "component",
+        "skipServe": true,
+        "devServerTarget": "example-app:build"
+      }
     }
   },
-  "tags": ["type:ui"]
+  "tags": [
+    "type:ui"
+  ]
 }

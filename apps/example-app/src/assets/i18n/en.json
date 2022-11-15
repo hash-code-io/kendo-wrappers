@@ -1,5 +1,7 @@
 {
-  "title": "Test Picker",
+  "dialog": {
+    "title": "Test Picker"
+  },
   "general": {
     "ok": "Ok",
     "cancel": "Cancel"

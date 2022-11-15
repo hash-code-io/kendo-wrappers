@@ -31,12 +31,8 @@ import { Subject, takeUntil } from 'rxjs';
   selector: 'hash-code-picker-dialog-wrapper',
   template: `
     <kendo-dialog-titlebar (close)="handleTitleClose($event)">
-      <div class="d-flex align-items-center">
-        <span
-          *ngIf="inputs.titleIcon"
-          style="font-size: 1.25rem; line-height: 1.5"
-          class="me-2 k-icon {{ inputs.titleIcon }}"
-        ></span>
+      <div class="title-container">
+        <span *ngIf="inputs.titleIcon" class="title-icon k-icon {{ inputs.titleIcon }}"></span>
         <span *ngIf="inputs.title">{{ inputs.title | transloco }}</span>
       </div>
     </kendo-dialog-titlebar>
@@ -62,6 +58,17 @@ import { Subject, takeUntil } from 'rxjs';
     `
       :host {
         display: block;
+      }
+
+      .title-container {
+        display: flex;
+        align-items: center;
+      }
+
+      .title-icon {
+        margin-right: 0.5rem;
+        font-size: 1.25rem;
+        line-height: 1.5;
       }
     `,
   ],

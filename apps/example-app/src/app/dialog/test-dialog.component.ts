@@ -10,7 +10,8 @@ import { closeOnAccept, closeOnCancel, PickerDialogBase } from '@hash-code/kendo
 export class TestDialogComponent extends PickerDialogBase<{ numbers: string[] }> {
   public constructor() {
     super();
-    this.title = 'title';
+    this.title = 'dialog.title';
+    this.titleIcon = 'k-i-user';
   }
 
   public data: string[] = ['0', '1', '2'];
