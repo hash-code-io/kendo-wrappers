@@ -31,6 +31,7 @@ export class DialogManagerService {
 
     component.componentType = options.content;
     component.componentInputs = options.componentInputs;
+
     return dialog.result as Observable<PickerDialogResult<TData>>;
   }
 }
