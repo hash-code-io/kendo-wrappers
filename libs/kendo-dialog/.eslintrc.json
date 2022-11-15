@@ -9,7 +9,7 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "parserOptions": {
-        "project": ["libs/kendo-dialog/tsconfig.*?.json"]
+        "project": ["libs/kendo-dialog/tsconfig.*?.json", "libs/kendo-dialog/cypress/tsconfig.cy.json"]
       },
       "rules": {
         "@angular-eslint/directive-selector": [

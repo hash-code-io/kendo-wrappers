@@ -7,8 +7,10 @@
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js",
     "start": "nx serve",
-    "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "lint": "nx workspace-lint && nx run-many --target=lint --all --parallel=6",
+    "update:check:all": "npx npm-check-updates",
+    "update:check:kendo": "npx npm-check-updates \"/^(@progress/kendo).*$/\""
   },
   "keywords": [
     "kendo",
