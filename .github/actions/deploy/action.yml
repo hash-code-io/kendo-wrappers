@@ -1,0 +1,16 @@
+name: Deploy
+description: Deploys packages to npm
+runs:
+  using: composite
+  steps:
+    - name: Check npm credentials
+      shell: bash
+      run: npm whoami
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    - name: Publish to npm
+      shell: bash
+      run:
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

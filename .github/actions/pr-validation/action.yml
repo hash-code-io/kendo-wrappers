@@ -1,0 +1,10 @@
+# For Cloud integration to work the job calling this action needs to set env: NX_CLOUD_ACCESS_TOKEN: ${ secrets.NX_CLOUD_KEY }}
+name: PrValidation
+description: Lints, tests and builds affected libs for PR Validation
+runs:
+  using: composite
+  steps:
+    - run: npx nx workspace-lint
+    - run: npx nx affected --target=lint
+    - run: npx nx affected --target=test --ci --code-coverage
+    - run: npx nx affected --target=build

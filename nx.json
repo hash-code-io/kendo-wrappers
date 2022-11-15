@@ -6,18 +6,6 @@
   "npmScope": "kendo-wrappers",
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e",
-          "component-test"
-        ]
-      }
-    },
-    "cloud": {
       "runner": "@nrwl/nx-cloud",
       "options": {
         "cacheableOperations": [
@@ -26,8 +14,7 @@
           "test",
           "e2e",
           "component-test"
-        ],
-        "accessToken": ""
+        ]
       }
     }
   },
