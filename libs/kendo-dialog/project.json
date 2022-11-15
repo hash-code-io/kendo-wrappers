@@ -13,7 +13,8 @@
       },
       "configurations": {
         "production": {
-          "tsConfig": "libs/kendo-dialog/tsconfig.lib.prod.json"
+          "tsConfig": "libs/kendo-dialog/tsconfig.lib.prod.json",
+          "updateBuildableProjectDepsInPackageJson": false
         },
         "development": {
           "tsConfig": "libs/kendo-dialog/tsconfig.lib.json"
