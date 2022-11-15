@@ -51,13 +51,6 @@
         "access": "public",
         "buildTarget": "production"
       }
-    },
-    "version": {
-      "executor": "@jscutlery/semver:version",
-      "options": {
-        "preset": "angular",
-        "postTargets": ["kendo-dialog:deploy"]
-      }
     }
   },
   "tags": ["type:ui"]
