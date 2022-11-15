@@ -1,10 +1,21 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { DialogModule } from '@progress/kendo-angular-dialog';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'kendo-wrappers-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'hash-code-root',
+  standalone: true,
+  template: ` <router-outlet></router-outlet>
+    <div kendoDialogContainer></div>`,
+  styles: [
+    `
+      :host {
+        display: block;
+        height: 100%;
+      }
+    `,
+  ],
+  imports: [DialogModule, RouterOutlet],
 })
-export class AppComponent {
-  title = 'example-app';
-}
+export class AppComponent {}

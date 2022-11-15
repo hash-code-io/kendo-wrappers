@@ -4,7 +4,13 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {}
+      "parserOptions": {
+        "project": ["apps/example-app-e2e/tsconfig.json"]
+      },
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": ["off"],
+        "no-console": "off"
+      }
     },
     {
       "files": ["src/plugins/index.js"],

@@ -3,12 +3,13 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/example-app/src",
-  "prefix": "kendo-wrappers",
+  "prefix": "hash-code",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "allowedCommonJsDependencies": ["flat"],
         "outputPath": "dist/apps/example-app",
         "index": "apps/example-app/src/index.html",
         "main": "apps/example-app/src/main.ts",
@@ -16,7 +17,7 @@
         "tsConfig": "apps/example-app/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
-          "apps/example-app/src/favicon.ico",
+          "apps/example-app/src/favicon.svg",
           "apps/example-app/src/assets"
         ],
         "styles": ["apps/example-app/src/styles.scss"],
@@ -91,5 +92,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["type:app"]
 }
