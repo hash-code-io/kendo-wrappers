@@ -8,10 +8,6 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Checkout all commits
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
     - name: Use Node.js
       uses: actions/setup-node@v3
       with:
@@ -23,7 +19,9 @@ runs:
         # It actually creates a .npmrc in a temporary folder
         # and sets the NPM_CONFIG_USERCONFIG environment variable.
         registry-url: https://registry.npmjs.org
+
     - uses: nrwl/nx-set-shas@v3
+
     - name: npm ci
       shell: bash
       run: npm ci
