@@ -1,13 +1,24 @@
 {
-  "name": "kendo-wrappers",
+  "name": "@hash-code/kendo-wrappers",
   "version": "0.0.0",
   "license": "MIT",
+  "description": "monorepo for kendo-wrapper development",
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js",
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test"
+  },
+  "keywords": [
+    "kendo",
+    "kendo-ui",
+    "wrapper",
+    "progress"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hash-code-io/kendo-wrappers.git"
   },
   "private": true,
   "dependencies": {
