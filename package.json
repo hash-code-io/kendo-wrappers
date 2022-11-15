@@ -54,6 +54,7 @@
     "@angular/language-service": "~14.2.0",
     "@angular/localize": "^14.2.10",
     "@cypress/webpack-dev-server": "^2.0.0",
+    "@jscutlery/semver": "^2.28.0",
     "@nrwl/cli": "15.0.13",
     "@nrwl/cypress": "15.0.13",
     "@nrwl/eslint-plugin-nx": "15.0.13",
