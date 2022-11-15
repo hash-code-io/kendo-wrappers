@@ -24,4 +24,6 @@ runs:
         # and sets the NPM_CONFIG_USERCONFIG environment variable.
         registry-url: https://registry.npmjs.org
     - uses: nrwl/nx-set-shas@v3
-    - run: npm ci
+    - name: npm ci
+      shell: bash
+      run: npm ci

@@ -1,5 +1,16 @@
+# For Cloud integration to work the job calling this action needs to set env: NX_CLOUD_ACCESS_TOKEN: ${ secrets.NX_CLOUD_KEY }}
 name: Deploy
-description: Deploys packages to npm
+description: Versions and deploys packages to npm
+inputs:
+  npm-token:
+    description: NPM_TOKEN env variable
+    required: true
+  github-token:
+    description: GITHUB_TOKEN env variable
+    required: true
+  manage-repo-token:
+    description: MANAGE_REPO_TOKEN env variable
+    required: true
 runs:
   using: composite
   steps:
@@ -7,10 +18,30 @@ runs:
       shell: bash
       run: npm whoami
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ inputs.npm-token }}
 
-    - name: Publish to npm
+    - name: git config
       shell: bash
-      run:
+      run: |
+        git config user.name "Github Actions"
+        git config user.email "-"
+
+    - name: Version
+      shell: bash
+      run: npm nx affected --base=last-release --target=version
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        NODE_AUTH_TOKEN: ${{ inputs.npm-token }}
+
+    - name: Tag last-release
+      shell: bash
+      run: git tag --force last-release
+
+    - name: Push to protected branch
+      uses: CasperWA/push-protected@v2.14.0
+      with:
+        token: ${{ inputs.manage-repo-token }}
+        ref: ${{ github.ref }}
+        tags: true
+        unprotect_reviews: true
+        force: true
