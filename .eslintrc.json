@@ -13,8 +13,8 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
+                "sourceTag": "type:ui",
+                "onlyDependOnLibsWithTags": ["type:ui"]
               }
             ]
           }
@@ -23,8 +23,69 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nrwl/nx/typescript"],
-      "rules": {}
+      "extends": [
+        "plugin:@nrwl/nx/typescript",
+        "plugin:rxjs/recommended"
+      ],
+      "rules": {
+        // add extra eslint rules, not in the recommended setting
+        "eqeqeq": ["error", "smart"],
+        "guard-for-in": "error",
+        "no-bitwise": "error",
+        "no-caller": "error",
+        "no-console": [
+          "error",
+          {
+            "allow": ["error", "warn"]
+          }
+        ],
+        "no-eval": "error",
+        "no-new-wrappers": "error",
+        "no-throw-literal": "error",
+        "no-undef-init": "error",
+        "prefer-arrow-callback": "error",
+        "radix": "error",
+
+        // @typescript-eslint:recommended overrides
+        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/no-empty-function": "error",
+
+        // add extra @typescript-eslint rules not in the recommended setting
+        "@typescript-eslint/consistent-type-definitions": "error", // from tslint interface-over-type-literal
+        "@typescript-eslint/explicit-function-return-type": ["error"],
+
+        "@typescript-eslint/no-shadow": [
+          "error",
+          {
+            "hoist": "all"
+          }
+        ],
+
+        "@typescript-eslint/no-unused-expressions": ["error", { "allowShortCircuit": false, "allowTernary": true }],
+        "@typescript-eslint/prefer-function-type": "error",
+        "@typescript-eslint/unified-signatures": "error",
+
+        // rxjs:recommended overrides
+        "rxjs/no-unsafe-switchmap": "error", // default: 'off'
+        "rxjs/no-unsafe-catch": "error", // default: 'off'
+        "rxjs/finnish": [
+          "error",
+          {
+            "functions": true,
+            "methods": true,
+            "names": {
+              "^(canActivate|canActivateChild|canDeactivate|canLoad|intercept|resolve|validate|store)$": false
+            },
+            "parameters": true,
+            "properties": true,
+            "strict": false,
+            "types": {
+              "^EventEmitter$": false
+            },
+            "variables": true
+          }
+        ]
+      }
     },
     {
       "files": ["*.js", "*.jsx"],
