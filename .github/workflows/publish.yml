@@ -31,12 +31,12 @@ jobs:
           git config user.name "Github Actions"
           git config user.email "-"
 
-#      - name: Version
-#        shell: bash
-#        run: npm nx affected --base=last-release --target=version
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Version
+        shell: bash
+        run: npm nx affected --base=last-release --target=version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Tag last-release
         shell: bash
