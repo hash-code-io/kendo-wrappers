@@ -105,7 +105,7 @@ export class PickerDialogWrapperComponent<TComponentType extends PickerDialogBas
   }
 
   public ngOnInit(): void {
-    this.ensureInputs();
+    if (!this.componentType) throw new Error('To use the PickerDialog contentType must be set');
     const component: TComponentType = this.contentOutlet.createComponent(this.componentType).instance;
     this.setUpComponentInputs(component);
     this.setUpCallbacks(component);
@@ -148,9 +148,5 @@ export class PickerDialogWrapperComponent<TComponentType extends PickerDialogBas
       this.inputs = inputs;
       this.cdr.markForCheck();
     });
-  }
-
-  private ensureInputs(): void {
-    if (!this.componentType) throw new Error('To use the PickerDialog contentType must be set');
   }
 }
