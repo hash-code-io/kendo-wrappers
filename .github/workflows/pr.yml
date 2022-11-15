@@ -17,4 +17,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: ./.github/actions/setup
-      - uses: ./.github/actions/pr-validation
+
+      - name: workspace lint
+        shell: bash
+        run: npx nx workspace-lint
+
+      - name: lint
+        shell: bash
+        run: npx nx affected --target=lint
+
+      - name: test
+        shell: bash
+        run: npx nx affected --target=test --ci --code-coverage
+
+      - name: build
+        shell: bash
+        run: npx nx affected --target=build
