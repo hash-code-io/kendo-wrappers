@@ -6,12 +6,17 @@ on:
       - main
 
 env:
-  NX_CLOUD_ACCESS_TOKEN: ${ secrets.NX_CLOUD_KEY }}
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_KEY }}
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout all commits
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
       - uses: ./.github/actions/setup
 
       - name: Check npm credentials

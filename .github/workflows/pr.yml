@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  NX_CLOUD_ACCESS_TOKEN: ${ secrets.NX_CLOUD_KEY }}
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_KEY }}
 
 concurrency:
   group: ${{ github.ref }}
@@ -16,6 +16,11 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout all commits
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
       - uses: ./.github/actions/setup
 
       - name: workspace lint
@@ -29,6 +34,11 @@ jobs:
       - name: test
         shell: bash
         run: npx nx affected --target=test --ci --code-coverage
+
+      # Have to set parallel to 1 for component-test because cypress apparently cannot run in parallel on the same machine (also doesn't work locally). Needs more investigations
+      - name: component-test
+        shell: bash
+        run: npx nx affected --target=component-test --parallel=1  --ci --code-coverage
 
       - name: build
         shell: bash
