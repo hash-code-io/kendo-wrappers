@@ -43,7 +43,7 @@ import { Subject, takeUntil } from 'rxjs';
       <button
         data-cy="accept"
         kendoButton
-        themeColor="primary"
+        [themeColor]="inputs.buttonThemeColor"
         (click)="handleAcceptClick()"
         [disabled]="!inputs.acceptButtonEnabled"
       >

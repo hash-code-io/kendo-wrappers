@@ -2,6 +2,7 @@ import { Directive } from '@angular/core';
 import { ActionsLayout } from '@progress/kendo-angular-dialog';
 import { closeOnAccept, closeOnCancel, defaultPickerInputs, PickerInputs } from './models';
 import { BehaviorSubject } from 'rxjs';
+import { ButtonThemeColor } from '@progress/kendo-angular-buttons';
 
 @Directive()
 export abstract class PickerDialogBase<TData> implements PickerInputs {
@@ -48,6 +49,13 @@ export abstract class PickerDialogBase<TData> implements PickerInputs {
   }
   public get actionsLayout(): ActionsLayout {
     return this.inputSubject$.value.actionsLayout;
+  }
+
+  public set buttonThemeColor(buttonThemeColor: ButtonThemeColor) {
+    this.inputSubject$.next({ ...this.inputSubject$.value, buttonThemeColor });
+  }
+  public get buttonThemeColor(): ButtonThemeColor {
+    return this.inputSubject$.value.buttonThemeColor;
   }
 
   public abstract handleAcceptClick(closeDialog: closeOnAccept<TData>): void;

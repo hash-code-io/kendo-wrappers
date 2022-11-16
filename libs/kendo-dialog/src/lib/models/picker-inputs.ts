@@ -1,4 +1,5 @@
 import { ActionsLayout } from '@progress/kendo-angular-dialog';
+import { ButtonThemeColor } from '@progress/kendo-angular-buttons';
 
 export interface PickerInputs {
   title: string;
@@ -7,6 +8,7 @@ export interface PickerInputs {
   cancelButtonTitle: string;
   acceptButtonEnabled: boolean;
   actionsLayout: ActionsLayout;
+  buttonThemeColor: ButtonThemeColor;
 }
 
 export const defaultPickerInputs: PickerInputs = {
@@ -15,6 +17,7 @@ export const defaultPickerInputs: PickerInputs = {
   cancelButtonTitle: 'general.cancel',
   acceptButtonEnabled: true,
   actionsLayout: 'stretched',
+  buttonThemeColor: 'primary',
 };
 
 export type PickerInputKeys = keyof PickerInputs;
@@ -26,6 +29,7 @@ const allInputs: Record<PickerInputKeys, unknown> = {
   acceptButtonEnabled: '',
   actionsLayout: '',
   titleIcon: '',
+  buttonThemeColor: '',
 };
 
 export const allPickerInputKeys = Object.keys(allInputs) as PickerInputKeys[];

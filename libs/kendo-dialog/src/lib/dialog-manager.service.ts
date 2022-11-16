@@ -6,17 +6,18 @@ import {
   kendoDialogSettingOmittedKeys,
   PickerDialogWrapperComponent,
   pickNonNullsyObjectValues,
-} from './picker/internal';
+} from './internal';
+
+import { map, Observable } from 'rxjs';
 import {
   allPickerInputKeys,
-  InfoDialogBase,
-  PickerDialogBase,
+  InfoDialogOptions,
+  InfoDialogResult,
   PickerDialogOptions,
   PickerDialogResult,
-} from './picker';
-import { map, Observable } from 'rxjs';
-import { InfoDialogResult } from './picker/models/info-dialog-result';
-import { InfoDialogOptions } from './picker/models/info-dialog-options';
+} from './models';
+import { PickerDialogBase } from './picker-dialog-base';
+import { InfoDialogBase } from './info-dialog-base';
 
 // Prevents auto-closing when ESC key is pressed
 const preventAction = (ev: DialogResult): boolean => {
