@@ -18,7 +18,9 @@
   "homepage": "https://hash-code.io",
   "peerDependencies": {
     "@angular/common": "^14.0.0",
-    "@angular/core": "^14.0.0"
+    "@angular/core": "^14.0.0",
+    "@progress/kendo-angular-popup": "^5.0.0",
+    "rxjs": "^7.5.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
