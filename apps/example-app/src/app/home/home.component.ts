@@ -11,6 +11,9 @@ import { RouterLinkWithHref } from '@angular/router';
       <li>
         <a routerLink="dialog">Dialog</a>
       </li>
+      <li>
+        <a routerLink="forms">Forms</a>
+      </li>
     </ul>
   `,
   styles: [

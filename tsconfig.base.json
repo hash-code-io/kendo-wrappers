@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@hash-code/kendo-dialog": ["libs/kendo-dialog/src/index.ts"]
+      "@hash-code/kendo-dialog": ["libs/kendo-dialog/src/index.ts"],
+      "@hash-code/kendo-forms": ["libs/kendo-forms/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

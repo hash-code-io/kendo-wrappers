@@ -1,9 +1,23 @@
 {
+  "formMessages": {
+    "errors": {
+      "customRequired": "This field is CUSTOM required",
+      "required": "This field is required",
+      "min": "Value too low",
+      "max": "Value too high"
+    }
+  },
   "dialog": {
     "title": "Test Picker"
   },
   "general": {
     "ok": "Ok",
     "cancel": "Cancel"
+  },
+  "form": {
+    "name": "Name",
+    "age": "Age",
+    "happy": "Happy",
+    "birthDay": "Birthday"
   }
 }
