@@ -14,7 +14,19 @@
             "depConstraints": [
               {
                 "sourceTag": "type:ui",
-                "onlyDependOnLibsWithTags": ["type:ui"]
+                "onlyDependOnLibsWithTags": ["type:ui", "type:util"]
+              },
+              {
+                "sourceTag": "scope:dialog",
+                "onlyDependOnLibsWithTags": ["scope:dialog"]
+              },
+              {
+                "sourceTag": "scope:forms",
+                "onlyDependOnLibsWithTags": ["scope:forms"]
+              },
+              {
+                "sourceTag": "scope:popup",
+                "onlyDependOnLibsWithTags": ["scope:popup"]
               },
               {
                 "sourceTag": "type:app",

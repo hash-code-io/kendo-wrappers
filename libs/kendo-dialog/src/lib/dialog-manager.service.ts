@@ -1,18 +1,26 @@
 import { Injectable } from '@angular/core';
+import { DialogCloseResult, DialogResult, DialogService, DialogSettings } from '@progress/kendo-angular-dialog';
 import {
-  DialogCloseResult,
-  DialogRef,
-  DialogResult,
-  DialogService,
-  DialogSettings,
-} from '@progress/kendo-angular-dialog';
-import { PickerDialogWrapperComponent } from './picker/internal';
-import { DialogOptions, PickerDialogBase, PickerDialogResult } from './picker';
-import { Observable } from 'rxjs';
+  filterObjectValues,
+  InfoDialogAdapterComponent,
+  kendoDialogSettingOmittedKeys,
+  PickerDialogWrapperComponent,
+  pickNonNullsyObjectValues,
+} from './internal';
+
+import { map, Observable } from 'rxjs';
+import {
+  allPickerInputKeys,
+  InfoDialogOptions,
+  InfoDialogResult,
+  PickerDialogOptions,
+  PickerDialogResult,
+} from './models';
+import { PickerDialogBase } from './picker-dialog-base';
+import { InfoDialogBase } from './info-dialog-base';
 
 // Prevents auto-closing when ESC key is pressed
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const preventAction = (ev: DialogResult, dialogRef?: DialogRef): boolean => {
+const preventAction = (ev: DialogResult): boolean => {
   return ev instanceof DialogCloseResult;
 };
 
@@ -21,7 +29,7 @@ export class DialogManagerService {
   public constructor(private dialogService: DialogService) {}
 
   public openPickerDialog$<TComponentType extends PickerDialogBase<TData>, TData>(
-    options: DialogOptions<TComponentType, TData>
+    options: PickerDialogOptions<TComponentType, TData>
   ): Observable<PickerDialogResult<TData>> {
     const kendoOptions: DialogSettings = { ...options, preventAction };
     kendoOptions.content = PickerDialogWrapperComponent<TComponentType, TData>;
@@ -32,5 +40,23 @@ export class DialogManagerService {
     component.componentType = options.content;
     component.componentInputs = options.componentInputs;
     return dialog.result as Observable<PickerDialogResult<TData>>;
+  }
+
+  public openInfoDialog$<TContent extends InfoDialogBase>(
+    options: InfoDialogOptions<TContent>
+  ): Observable<InfoDialogResult> {
+    const text = typeof options.content === 'string' ? options.content : undefined;
+    const componentType = typeof options.content !== 'string' ? options.content : undefined;
+    const furtherInputs = pickNonNullsyObjectValues(options, allPickerInputKeys);
+    const filteredOptions = filterObjectValues<DialogSettings>(options, kendoDialogSettingOmittedKeys);
+    return this.openPickerDialog$<InfoDialogAdapterComponent, string>({
+      ...filteredOptions,
+      content: InfoDialogAdapterComponent,
+      componentInputs: {
+        text,
+        componentType,
+        ...furtherInputs,
+      },
+    }).pipe(map(result => result.type));
   }
 }

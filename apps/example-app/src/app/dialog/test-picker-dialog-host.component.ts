@@ -4,7 +4,7 @@ import { ButtonModule } from '@progress/kendo-angular-buttons';
 import { CommonModule } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
 import { DialogManagerService, isAcceptResult } from '@hash-code/kendo-dialog';
-import { TestDialogComponent } from './test-dialog.component';
+import { TestPickerDialogComponent } from './test-picker-dialog.component';
 
 interface DialogInfo {
   data?: string[];
@@ -14,7 +14,7 @@ interface DialogInfo {
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  selector: 'hash-code-test-dialog-host',
+  selector: 'hash-code-test-picker-dialog-host',
   template: `
     <button kendoButton (click)="openDialog()">Open Dialog</button>
     <ng-container *ngIf="data$ | async as data">
@@ -28,7 +28,7 @@ interface DialogInfo {
   `,
   imports: [DialogModule, ButtonModule, CommonModule],
 })
-export class TestHostComponent implements OnDestroy {
+export class TestPickerDialogHostComponent implements OnDestroy {
   private destroy$ = new Subject<void>();
   public constructor(private dialogService: DialogManagerService) {}
 
@@ -36,8 +36,8 @@ export class TestHostComponent implements OnDestroy {
 
   public openDialog(): void {
     this.dialogService
-      .openPickerDialog$<TestDialogComponent, { numbers: string[] }>({
-        content: TestDialogComponent,
+      .openPickerDialog$<TestPickerDialogComponent, { numbers: string[] }>({
+        content: TestPickerDialogComponent,
         animation: false,
       })
       // in a real app come up with a better way than to subscribe (i.e. ComponentStore)

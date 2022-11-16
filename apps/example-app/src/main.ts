@@ -17,6 +17,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DialogModule } from '@progress/kendo-angular-dialog';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PopupModule } from '@progress/kendo-angular-popup';
 
 if (environment.production) {
   enableProdMode();
@@ -38,6 +39,7 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(BrowserModule, BrowserAnimationsModule, HttpClientModule),
     provideRouter(appRoutes),
     importProvidersFrom(DialogModule),
+    importProvidersFrom(PopupModule),
     importProvidersFrom(TranslocoModule),
     {
       provide: TRANSLOCO_CONFIG,

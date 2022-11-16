@@ -3,7 +3,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { DialogModule } from '@progress/kendo-angular-dialog';
 import { ButtonModule } from '@progress/kendo-angular-buttons';
 import { CommonModule } from '@angular/common';
-import { closeOnAccept, closeOnCancel, DialogManagerService, isAcceptResult, PickerDialogBase } from '../src';
+import { DialogManagerService, isAcceptResult, PickerDialogBase } from '../src';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -19,12 +19,12 @@ export class TestDialogComponent extends PickerDialogBase<{ data: string[] }> {
 
   public data: string[] = ['0', '1', '2'];
 
-  public handleAcceptClick(closeDialog: closeOnAccept<{ data: string[] }>): void {
-    closeDialog({ data: this.data });
+  public handleAcceptClick(): void {
+    this.close({ type: 'Accept', data: { data: this.data } });
   }
 
-  public handleCancelClick(closeDialog: closeOnCancel): void {
-    closeDialog();
+  public handleCancelClick(): void {
+    this.close({ type: 'Cancel' });
   }
 }
 

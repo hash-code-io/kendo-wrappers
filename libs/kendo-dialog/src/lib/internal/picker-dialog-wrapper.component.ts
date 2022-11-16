@@ -13,15 +13,7 @@ import { DialogContentBase, DialogModule, DialogRef, PreventableEvent } from '@p
 import { TranslocoModule } from '@ngneat/transloco';
 import { NgIf } from '@angular/common';
 import { ButtonModule } from '@progress/kendo-angular-buttons';
-import {
-  closeOnAccept,
-  closeOnCancel,
-  defaultPickerInputs,
-  PickerComponentInputs,
-  PickerDialogAcceptResult,
-  PickerDialogCancelResult,
-  PickerInputs,
-} from '../models';
+import { defaultPickerInputs, PickerComponentInputs, PickerInputs } from '../models';
 import { PickerDialogBase } from '../picker-dialog-base';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -43,7 +35,7 @@ import { Subject, takeUntil } from 'rxjs';
       <button
         data-cy="accept"
         kendoButton
-        themeColor="primary"
+        [themeColor]="inputs.buttonThemeColor"
         (click)="handleAcceptClick()"
         [disabled]="!inputs.acceptButtonEnabled"
       >
@@ -127,19 +119,12 @@ export class PickerDialogWrapperComponent<TComponentType extends PickerDialogBas
   }
 
   private setUpCallbacks(component: TComponentType): void {
-    const acceptCallback: closeOnAccept<TData> = (data: TData): void => {
-      const result: PickerDialogAcceptResult<TData> = { type: 'Accept', data };
-      this.dialog.close(result);
-    };
-    const cancelCallback: closeOnCancel = (): void => {
-      const result: PickerDialogCancelResult = { type: 'Cancel' };
-      this.dialog.close(result);
-    };
+    component.close$.pipe(takeUntil(this.destroy$)).subscribe(result => this.dialog.close(result));
 
     const accept = component.handleAcceptClick.bind(component);
     const cancel = component.handleCancelClick.bind(component);
-    this.handleAcceptClick = (): void => accept(acceptCallback);
-    this.handleCancelClick = (): void => cancel(cancelCallback);
+    this.handleAcceptClick = (): void => accept();
+    this.handleCancelClick = (): void => cancel();
   }
 
   private setUpInputChangeDetection(component: TComponentType): void {
