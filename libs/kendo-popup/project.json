@@ -44,5 +44,5 @@
       }
     }
   },
-  "tags": ["type:ui"]
+  "tags": ["type:ui", "scope:popup"]
 }
