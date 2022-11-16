@@ -42,4 +42,4 @@ jobs:
 
       - name: build
         shell: bash
-        run: npx nx affected --target=build
+        run: npx nx affected --target=build --verbose
