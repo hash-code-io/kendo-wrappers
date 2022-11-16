@@ -17,8 +17,7 @@
     "paths": {
       "@hash-code/kendo-dialog": ["libs/kendo-dialog/src/index.ts"],
       "@hash-code/kendo-forms": ["libs/kendo-forms/src/index.ts"],
-      "@hash-code/kendo-popup": ["libs/kendo-popup/src/index.ts"],
-      "@kendo-wrappers/util": ["libs/util/src/index.ts"]
+      "@hash-code/kendo-popup": ["libs/kendo-popup/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
