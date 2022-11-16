@@ -1,5 +1,5 @@
 import { MountConfig } from 'cypress/angular';
-import { TestHostComponent } from './test-dialog.component.cy';
+import { TestHostComponent } from './test-picker-dialog.component.cy';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslocoModule } from '@ngneat/transloco';
 import { DialogManagerService } from '../src';
@@ -38,7 +38,7 @@ const openDialog = (): void => {
 };
 
 //TODO: with Cypress 11 we can fix translations
-describe(DialogManagerService.name, () => {
+describe(`${DialogManagerService.name} - Picker`, () => {
   const config: MountConfig<TestHostComponent> = {
     imports: [NoopAnimationsModule, TranslocoModule],
   };
