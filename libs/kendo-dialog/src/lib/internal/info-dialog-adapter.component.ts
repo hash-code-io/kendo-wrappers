@@ -1,4 +1,3 @@
-import { closeOnAccept, closeOnCancel } from '../models';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -30,12 +29,12 @@ export class InfoDialogAdapterComponent extends PickerDialogBase<string> impleme
   public componentType?: Type<InfoDialogBase>;
   private destroy$ = new Subject<void>();
 
-  public handleAcceptClick(closeDialog: closeOnAccept<string>): void {
-    closeDialog('Accept');
+  public handleAcceptClick(): void {
+    this.close({ type: 'Accept', data: 'Accept' });
   }
 
-  public handleCancelClick(closeDialog: closeOnCancel): void {
-    closeDialog();
+  public handleCancelClick(): void {
+    this.close({ type: 'Cancel' });
   }
 
   public ngOnInit(): void {

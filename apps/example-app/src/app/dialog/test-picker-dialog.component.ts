@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { closeOnAccept, closeOnCancel, PickerDialogBase } from '@hash-code/kendo-dialog';
+import { PickerDialogBase } from '@hash-code/kendo-dialog';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -16,11 +16,11 @@ export class TestPickerDialogComponent extends PickerDialogBase<{ numbers: strin
 
   public data: string[] = ['0', '1', '2'];
 
-  public handleAcceptClick(closeDialog: closeOnAccept<{ numbers: string[] }>): void {
-    closeDialog({ numbers: this.data });
+  public handleAcceptClick(): void {
+    this.close({ type: 'Accept', data: { numbers: this.data } });
   }
 
-  public handleCancelClick(closeDialog: closeOnCancel): void {
-    closeDialog();
+  public handleCancelClick(): void {
+    this.close({ type: 'Cancel' });
   }
 }

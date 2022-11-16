@@ -1,13 +1,15 @@
 import { Directive } from '@angular/core';
 import { ActionsLayout } from '@progress/kendo-angular-dialog';
-import { closeOnAccept, closeOnCancel, defaultPickerInputs, PickerInputs } from './models';
-import { BehaviorSubject } from 'rxjs';
+import { defaultPickerInputs, PickerDialogResult, PickerInputs } from './models';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { ButtonThemeColor } from '@progress/kendo-angular-buttons';
 
 @Directive()
 export abstract class PickerDialogBase<TData> implements PickerInputs {
   private inputSubject$ = new BehaviorSubject<PickerInputs>(defaultPickerInputs);
   public inputs$ = this.inputSubject$.asObservable();
+  private closeSubject$ = new Subject<PickerDialogResult<TData>>();
+  public close$ = this.closeSubject$.asObservable();
 
   public set title(title: string) {
     this.inputSubject$.next({ ...this.inputSubject$.value, title });
@@ -58,6 +60,10 @@ export abstract class PickerDialogBase<TData> implements PickerInputs {
     return this.inputSubject$.value.buttonThemeColor;
   }
 
-  public abstract handleAcceptClick(closeDialog: closeOnAccept<TData>): void;
-  public abstract handleCancelClick(closeDialog: closeOnCancel): void;
+  public close(result: PickerDialogResult<TData>): void {
+    this.closeSubject$.next(result);
+  }
+
+  public abstract handleAcceptClick(): void;
+  public abstract handleCancelClick(): void;
 }
