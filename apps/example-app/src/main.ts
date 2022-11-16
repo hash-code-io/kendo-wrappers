@@ -16,6 +16,7 @@ import {
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DialogModule } from '@progress/kendo-angular-dialog';
+import { ReactiveFormsModule } from '@angular/forms';
 
 if (environment.production) {
   enableProdMode();
@@ -33,6 +34,7 @@ export class TranslocoHttpLoader implements TranslocoLoader {
 
 bootstrapApplication(AppComponent, {
   providers: [
+    importProvidersFrom(ReactiveFormsModule),
     importProvidersFrom(BrowserModule, BrowserAnimationsModule, HttpClientModule),
     provideRouter(appRoutes),
     importProvidersFrom(DialogModule),

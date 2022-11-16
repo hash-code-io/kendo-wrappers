@@ -6,7 +6,7 @@ import { ControlBaseComponent } from './base/control-base.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'hash-code-date-input',
+  selector: 'hash-code-date-picker',
   standalone: true,
   template: `
     ${formControlWrapperBefore}
