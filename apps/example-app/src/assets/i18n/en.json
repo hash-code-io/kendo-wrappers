@@ -10,6 +10,9 @@
   "dialog": {
     "title": "Test Picker"
   },
+  "warnDialog": {
+    "body": "You have been warned!"
+  },
   "general": {
     "ok": "Ok",
     "cancel": "Cancel"

@@ -4,10 +4,10 @@ import { closeOnAccept, closeOnCancel, PickerDialogBase } from '@hash-code/kendo
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  selector: 'hash-code-test-dialog',
+  selector: 'hash-code-test-picker-dialog',
   template: ` <div>This is where your Grid or whatever to select data would live!</div> `,
 })
-export class TestDialogComponent extends PickerDialogBase<{ numbers: string[] }> {
+export class TestPickerDialogComponent extends PickerDialogBase<{ numbers: string[] }> {
   public constructor() {
     super();
     this.title = 'dialog.title';
