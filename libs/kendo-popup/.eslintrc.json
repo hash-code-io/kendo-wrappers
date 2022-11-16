@@ -6,7 +6,7 @@
       "files": ["*.ts"],
       "extends": ["plugin:@nrwl/nx/angular", "plugin:@angular-eslint/template/process-inline-templates"],
       "parserOptions": {
-        "project": ["libs/kendo-popup/tsconfig.*?.json"]
+        "project": ["libs/kendo-popup/tsconfig.*?.json", "libs/kendo-popup/cypress/tsconfig.cy.json"]
       },
       "rules": {
         "@angular-eslint/directive-selector": [
