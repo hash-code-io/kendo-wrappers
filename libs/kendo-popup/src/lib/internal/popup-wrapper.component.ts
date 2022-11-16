@@ -1,15 +1,5 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  HostListener,
-  OnInit,
-  Type,
-  ViewChild,
-  ViewContainerRef,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, Type, ViewChild, ViewContainerRef } from '@angular/core';
 import { PopupComponentInputs, PopupResult } from '../models';
-import { mergeAll, Observable, of, Subject } from 'rxjs';
 import { DataPopupBase } from '../data-popup-base';
 
 @Component({
@@ -25,28 +15,18 @@ import { DataPopupBase } from '../data-popup-base';
     `,
   ],
 })
-export class PopupWrapperComponent<TComponentType extends DataPopupBase<TData>, TData> implements OnInit {
-  @ViewChild('contentOutlet', { static: true, read: ViewContainerRef })
+export class PopupWrapperComponent<TComponentType extends DataPopupBase<TData>, TData> {
+  @ViewChild('contentOutlet', { read: ViewContainerRef })
   private contentOutlet!: ViewContainerRef;
   public componentType!: Type<TComponentType>;
+  public closeCallback!: (result: PopupResult<TData>) => void;
   public componentInputs?: PopupComponentInputs<TComponentType>;
-  private closeSubject$ = new Subject<Observable<PopupResult<TData>>>();
-  public close$ = this.closeSubject$.pipe(mergeAll());
 
   @HostListener('document:keydown', ['$event'])
   public keydown(event: KeyboardEvent): void {
     if (event.code === 'Escape') {
-      this.closeSubject$.next(of({ type: 'Cancel' }));
+      this.closeCallback({ type: 'Cancel' });
     }
-  }
-
-  public constructor(private cdr: ChangeDetectorRef) {}
-
-  public ngOnInit(): void {
-    if (!this.componentType) throw new Error('To use the PickerDialog contentType must be set');
-    const component: TComponentType = this.contentOutlet.createComponent(this.componentType).instance;
-    this.setUpComponentInputs(component);
-    this.hookUpObservables(component);
   }
 
   private setUpComponentInputs(component: TComponentType): void {
@@ -58,7 +38,15 @@ export class PopupWrapperComponent<TComponentType extends DataPopupBase<TData>, 
     }
   }
 
-  private hookUpObservables(component: TComponentType): void {
-    this.closeSubject$.next(component.close$);
+  // public ngAfterViewInit(): void {
+  //   if (!this.componentType) throw new Error('To use the Popup componentType must be set');
+  //   if (!this.closeCallback) throw new Error('To use the Popup closeCallback must be set');
+  //   const component: TComponentType = this.contentOutlet.createComponent(this.componentType).instance;
+  //   this.setUpComponentInputs(component);
+  // }
+
+  public setup(): void {
+    const component: TComponentType = this.contentOutlet.createComponent(this.componentType).instance;
+    this.setUpComponentInputs(component);
   }
 }

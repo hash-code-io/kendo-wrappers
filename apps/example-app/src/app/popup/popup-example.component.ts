@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef } from '@angular/core';
-import { PopupRef, PopupService } from '@progress/kendo-angular-popup';
 import { ButtonModule } from '@progress/kendo-angular-buttons';
 import { TestPopupComponent } from './test-popup.component';
+import { PopupManagerService, PopupResult } from '@hash-code/kendo-popup';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -12,19 +12,18 @@ import { TestPopupComponent } from './test-popup.component';
   styles: [],
 })
 export class PopupExampleComponent {
-  private popupRef: PopupRef | null = null;
-
-  public constructor(private popupService: PopupService) {}
+  private close?: (result: PopupResult<string>) => void;
+  public constructor(private popupService: PopupManagerService) {}
 
   public togglePopup(anchor: ElementRef | HTMLElement): void {
-    if (this.popupRef) {
-      this.popupRef.close();
-      this.popupRef = null;
-    } else {
-      this.popupRef = this.popupService.open({
-        anchor: anchor,
-        content: TestPopupComponent,
-      });
+    if (this.close) {
+      this.close({ type: 'Cancel' });
+      this.close = undefined;
+      return;
     }
+
+    const res$ = this.popupService.open$<TestPopupComponent, string>({ content: TestPopupComponent, anchor });
+    res$.result$.subscribe(x => console.warn(x));
+    this.close = res$.close;
   }
 }

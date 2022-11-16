@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { PopupService, PopupSettings } from '@progress/kendo-angular-popup';
-import { PopupResult } from './models';
+import { PopupManagerResult, PopupOptions, PopupResult } from './models';
 import { DataPopupBase } from './data-popup-base';
-import { PopupOptions } from './models/popup-options';
-import { Observable } from 'rxjs';
 import { PopupWrapperComponent } from './internal';
+import { map } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class PopupManagerService {
@@ -12,7 +11,7 @@ export class PopupManagerService {
 
   public open$<TComponentType extends DataPopupBase<TData>, TData>(
     options: PopupOptions<TComponentType, TData>
-  ): Observable<PopupResult<TData>> {
+  ): PopupManagerResult<TData> {
     const kendoOptions: PopupSettings = { ...options };
     kendoOptions.content = PopupWrapperComponent<TComponentType, TData>;
 
@@ -22,6 +21,27 @@ export class PopupManagerService {
     component.componentType = options.content;
     component.componentInputs = options.componentInputs;
 
-    return component.close$;
+    let closeResult: PopupResult<TData> | null = null;
+    component.closeCallback = (result): void => {
+      closeResult = result;
+      popup.close();
+    };
+
+    const managerResult$ = popup.popupClose.pipe(
+      map(() => {
+        if (!closeResult) throw new Error('invalid internal operation: closeResult was null');
+        return closeResult;
+      })
+    );
+
+    component.setup();
+
+    return {
+      result$: managerResult$,
+      close: (result): void => {
+        closeResult = result;
+        popup.close();
+      },
+    };
   }
 }

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { DataPopupBase } from '@hash-code/kendo-popup';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -21,4 +22,4 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     `,
   ],
 })
-export class TestPopupComponent {}
+export class TestPopupComponent extends DataPopupBase<string> {}
