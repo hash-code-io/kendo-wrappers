@@ -36,6 +36,7 @@
     "@nrwl/angular": "15.0.13",
     "@progress/kendo-angular-buttons": "^8.2.1",
     "@progress/kendo-angular-common": "^3.2.1",
+    "@progress/kendo-angular-dateinputs": "^7.1.5",
     "@progress/kendo-angular-dialog": "^7.1.4",
     "@progress/kendo-angular-inputs": "^10.1.1",
     "@progress/kendo-angular-intl": "^4.1.0",
