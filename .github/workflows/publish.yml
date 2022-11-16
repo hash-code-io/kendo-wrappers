@@ -1,9 +1,8 @@
 name: Publish
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types: [published]
 
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_KEY }}
@@ -19,35 +18,15 @@ jobs:
 
       - uses: ./.github/actions/setup
 
-      - name: Check npm credentials
-        shell: bash
-        run: npm whoami
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: git config
+      - name: Parse Version
+        id: parse-version
         shell: bash
         run: |
-          git config user.name "Github Actions"
-          git config user.email "-"
+          id=$(echo ${{ github.ref_name }} | cut -dv -f2)
+          echo "PARSED_VERSION=$id" >> $GITHUB_OUTPUT
 
-      - name: Version
+      - name: Publish to npm
         shell: bash
-        run: npx nx affected --base=last-release --target=version
+        run: npx nx run-many --target=deploy --package-version=${{ steps.parse-version.outputs.PARSED_VERSION }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Tag last-release
-        shell: bash
-        run: git tag --force last-release
-
-      - name: Push to protected branch
-        uses: CasperWA/push-protected@v2.14.0
-        with:
-          token: ${{ secrets.MANAGE_REPO_TOKEN }}
-          ref: ${{ github.ref }}
-          tags: true
-          unprotect_reviews: true
-          force: true
-
