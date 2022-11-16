@@ -4,9 +4,6 @@ on:
   pull_request:
     branches:
       - main
-  push:
-    branches:
-      - 'push-action/**'
 
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_KEY }}
@@ -18,7 +15,6 @@ concurrency:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    if: "!contains(github.ref, 'push-action')"
     steps:
       - name: Checkout all commits
         uses: actions/checkout@v3
