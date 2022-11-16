@@ -16,3 +16,16 @@ export const defaultPickerInputs: PickerInputs = {
   acceptButtonEnabled: true,
   actionsLayout: 'stretched',
 };
+
+export type PickerInputKeys = keyof PickerInputs;
+
+const allInputs: Record<PickerInputKeys, unknown> = {
+  title: '',
+  acceptButtonTitle: '',
+  cancelButtonTitle: '',
+  acceptButtonEnabled: '',
+  actionsLayout: '',
+  titleIcon: '',
+};
+
+export const allPickerInputKeys = Object.keys(allInputs) as PickerInputKeys[];

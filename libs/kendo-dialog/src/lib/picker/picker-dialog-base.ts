@@ -4,7 +4,7 @@ import { closeOnAccept, closeOnCancel, defaultPickerInputs, PickerInputs } from 
 import { BehaviorSubject } from 'rxjs';
 
 @Directive()
-export abstract class PickerDialogBase<TData> {
+export abstract class PickerDialogBase<TData> implements PickerInputs {
   private inputSubject$ = new BehaviorSubject<PickerInputs>(defaultPickerInputs);
   public inputs$ = this.inputSubject$.asObservable();
 
