@@ -14,19 +14,19 @@
             "depConstraints": [
               {
                 "sourceTag": "type:ui",
-                "onlyDependOnLibsWithTags": ["type:ui", "type:util"]
+                "onlyDependOnLibsWithTags": ["type:ui", "type:common"]
               },
               {
                 "sourceTag": "scope:dialog",
-                "onlyDependOnLibsWithTags": ["scope:dialog"]
+                "onlyDependOnLibsWithTags": ["scope:dialog", "scope:shared"]
               },
               {
                 "sourceTag": "scope:forms",
-                "onlyDependOnLibsWithTags": ["scope:forms"]
+                "onlyDependOnLibsWithTags": ["scope:forms", "scope:shared"]
               },
               {
                 "sourceTag": "scope:popup",
-                "onlyDependOnLibsWithTags": ["scope:popup"]
+                "onlyDependOnLibsWithTags": ["scope:popup", "scope:shared"]
               },
               {
                 "sourceTag": "type:app",

@@ -1,7 +1,7 @@
 {
   "name": "@hash-code/kendo-popup",
   "version": "0.0.0",
-  "description": "Simple wrapper for Kendo Dialogs",
+  "description": "Simple wrapper for Kendo Popups",
   "repository": {
     "type": "git",
     "url": "https://github.com/hash-code-io/kendo-wrappers.git"

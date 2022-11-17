@@ -1,12 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DialogCloseResult, DialogResult, DialogService, DialogSettings } from '@progress/kendo-angular-dialog';
-import {
-  filterObjectValues,
-  InfoDialogAdapterComponent,
-  kendoDialogSettingOmittedKeys,
-  PickerDialogWrapperComponent,
-  pickNonNullsyObjectValues,
-} from './internal';
+import { InfoDialogAdapterComponent, kendoDialogSettingOmittedKeys, PickerDialogWrapperComponent } from './internal';
 
 import { map, Observable } from 'rxjs';
 import {
@@ -18,6 +12,7 @@ import {
 } from './models';
 import { PickerDialogBase } from './picker-dialog-base';
 import { InfoDialogBase } from './info-dialog-base';
+import { filterObjectValues, pickNonNullsyObjectValues } from '@hash-code/kendo-common';
 
 // Prevents auto-closing when ESC key is pressed
 const preventAction = (ev: DialogResult): boolean => {

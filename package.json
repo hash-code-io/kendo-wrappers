@@ -10,7 +10,8 @@
     "test": "nx test",
     "lint": "nx workspace-lint && nx run-many --target=lint --all --parallel=6",
     "update:check:all": "npx npm-check-updates",
-    "update:check:kendo": "npx npm-check-updates \"/^(@progress/kendo).*$/\""
+    "update:check:kendo": "npx npm-check-updates \"/^(@progress/kendo).*$/\"",
+    "set-versions": "node ./scripts/set-versions.mjs"
   },
   "keywords": [
     "kendo",

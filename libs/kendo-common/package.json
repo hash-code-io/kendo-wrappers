@@ -1,7 +1,7 @@
 {
-  "name": "@hash-code/kendo-dialog",
+  "name": "@hash-code/kendo-common",
   "version": "0.0.0",
-  "description": "Simple wrapper for Kendo Dialogs",
+  "description": "Common types for all Kendo Wrapper packages",
   "repository": {
     "type": "git",
     "url": "https://github.com/hash-code-io/kendo-wrappers.git"
@@ -18,12 +18,7 @@
   "homepage": "https://hash-code.io",
   "peerDependencies": {
     "@angular/common": "^14.0.0",
-    "@angular/core": "^14.0.0",
-    "rxjs": "^7.5.0",
-    "@ngneat/transloco": "^4.0.0",
-    "@progress/kendo-angular-dialog": "^7.0.0",
-    "@progress/kendo-angular-buttons": "^8.0.0",
-    "@hash-code/kendo-common": "0.0.0"
+    "@angular/core": "^14.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
