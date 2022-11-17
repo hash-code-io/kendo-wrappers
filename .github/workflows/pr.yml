@@ -40,17 +40,6 @@ jobs:
         shell: bash
         run: npx nx affected --target=component-test --parallel=1  --ci --code-coverage
 
-      # TO BE REMOVED!!
-      - name: Set Version to 4.2.0
-        shell: bash
-        run: npm run set-versions -- 4.2.0
-
       - name: build
         shell: bash
         run: npx nx affected --target=build
-
-      # TO BE REMOVED!!
-      - name: Upload dist
-        uses: actions/upload-artifact@v3
-        with:
-          path: dist

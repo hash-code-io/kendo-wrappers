@@ -25,6 +25,10 @@ jobs:
           id=$(echo ${{ github.ref_name }} | cut -dv -f2)
           echo "PARSED_VERSION=$id" >> $GITHUB_OUTPUT
 
+      - name: Set Version to ${{ steps.parse-version.outputs.PARSED_VERSION }}
+        shell: bash
+        run: npm run set-versions -- ${{ steps.parse-version.outputs.PARSED_VERSION }}
+
       - name: Publish to npm
         shell: bash
         run: npx nx run-many --target=deploy --package-version=${{ steps.parse-version.outputs.PARSED_VERSION }}
