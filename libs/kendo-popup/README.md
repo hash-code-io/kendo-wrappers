@@ -1,7 +1,7 @@
+![Cover Image](../../docs/hash-code.logo.png)
+
+---
+
 # kendo-popup
 
-This library was generated with [Nx](https://nx.dev).
-
-## Running unit tests
-
-Run `nx test kendo-popup` to execute the unit tests.
+Simple wrapper for Kendo Popups

@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@hash-code/kendo-common": ["libs/kendo-common/src/index.ts"],
       "@hash-code/kendo-dialog": ["libs/kendo-dialog/src/index.ts"],
       "@hash-code/kendo-forms": ["libs/kendo-forms/src/index.ts"],
       "@hash-code/kendo-popup": ["libs/kendo-popup/src/index.ts"]
