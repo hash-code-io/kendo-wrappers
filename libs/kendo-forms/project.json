@@ -38,6 +38,7 @@
     },
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
+      "dependsOn": ["^deploy"],
       "options": {
         "access": "public",
         "buildTarget": "production"
