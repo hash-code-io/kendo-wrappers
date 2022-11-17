@@ -13,7 +13,7 @@ import { DialogContentBase, DialogModule, DialogRef, PreventableEvent } from '@p
 import { TranslocoModule } from '@ngneat/transloco';
 import { NgIf } from '@angular/common';
 import { ButtonModule } from '@progress/kendo-angular-buttons';
-import { defaultPickerInputs, PickerComponentInputs, PickerInputs } from '../models';
+import { defaultPickerInputs, PickerInputs } from '../models';
 import { PickerDialogBase } from '../picker-dialog-base';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -74,7 +74,7 @@ export class PickerDialogWrapperComponent<TComponentType extends PickerDialogBas
   private contentOutlet!: ViewContainerRef;
   public inputs: PickerInputs = defaultPickerInputs;
   public componentType!: Type<TComponentType>;
-  public componentInputs?: PickerComponentInputs<TComponentType>;
+  public componentInputs?: Partial<TComponentType>;
   private destroy$ = new Subject<void>();
 
   public handleAcceptClick!: () => void;

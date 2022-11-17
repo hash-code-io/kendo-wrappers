@@ -1,10 +1,4 @@
-type Entries<T> = {
-  [K in keyof T]: [K, T[K]];
-}[keyof T][];
-
-type PartialRecord<T> = {
-  [K in keyof T]?: T[K];
-};
+import { ObjectEntries } from '../general-types';
 
 export function pickNonNullsyObjectValues<T>(obj: T, properties: (keyof T)[]): Partial<T> {
   const acc: Partial<T> = {};
@@ -15,9 +9,9 @@ export function pickNonNullsyObjectValues<T>(obj: T, properties: (keyof T)[]): P
   return acc;
 }
 
-export function filterObjectValues<T extends PartialRecord<T>>(obj: T, properties: (keyof T)[]): Partial<T> {
+export function filterObjectValues<T extends Partial<T>>(obj: T, properties: (keyof T)[]): Partial<T> {
   const acc: Partial<T> = {};
-  const entries = Object.entries(obj) as Entries<T>;
+  const entries = Object.entries(obj) as ObjectEntries<T>;
 
   for (const [key, value] of entries) {
     if (!properties.includes(key)) acc[key] = value;
