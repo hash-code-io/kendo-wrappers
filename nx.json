@@ -13,7 +13,8 @@
           "lint",
           "test",
           "e2e",
-          "component-test"
+          "component-test",
+          "deploy"
         ],
         "useDaemonProcess": false
       }
