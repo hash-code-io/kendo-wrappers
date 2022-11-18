@@ -1,4 +1,6 @@
-import { ObjectEntries } from '../general-types';
+type ObjectEntries<T> = {
+  [K in keyof T]: [K, T[K]];
+}[keyof T][];
 
 export function pickNonNullsyObjectValues<T>(obj: T, properties: (keyof T)[]): Partial<T> {
   const acc: Partial<T> = {};
