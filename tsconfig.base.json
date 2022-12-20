@@ -10,16 +10,33 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@hash-code/kendo-common": ["libs/kendo-common/src/index.ts"],
-      "@hash-code/kendo-dialog": ["libs/kendo-dialog/src/index.ts"],
-      "@hash-code/kendo-forms": ["libs/kendo-forms/src/index.ts"],
-      "@hash-code/kendo-popup": ["libs/kendo-popup/src/index.ts"]
+      "@hash-code/kendo-common": [
+        "libs/kendo-common/src/index.ts"
+      ],
+      "@hash-code/kendo-dialog": [
+        "libs/kendo-dialog/src/index.ts"
+      ],
+      "@hash-code/kendo-forms": [
+        "libs/kendo-forms/src/index.ts"
+      ],
+      "@hash-code/kendo-popup": [
+        "libs/kendo-popup/src/index.ts"
+      ],
+      "@hash-code/kendo-layout": [
+        "libs/kendo-layout/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
