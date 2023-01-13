@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLinkWithHref } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -30,6 +30,6 @@ import { RouterLinkWithHref } from '@angular/router';
       }
     `,
   ],
-  imports: [RouterLinkWithHref],
+  imports: [RouterLink],
 })
 export class HomeComponent {}
