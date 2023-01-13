@@ -39,6 +39,7 @@
     "@progress/kendo-angular-common": "^3.2.1",
     "@progress/kendo-angular-dateinputs": "^7.1.5",
     "@progress/kendo-angular-dialog": "^7.1.4",
+    "@progress/kendo-angular-indicators": "^3.0.2",
     "@progress/kendo-angular-inputs": "^10.1.1",
     "@progress/kendo-angular-intl": "^4.1.0",
     "@progress/kendo-angular-l10n": "^4.0.0",
