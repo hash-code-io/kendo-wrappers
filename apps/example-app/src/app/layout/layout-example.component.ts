@@ -58,6 +58,10 @@ import { NgStyle } from '@angular/common';
         margin-top: 20px;
         width: 100%;
       }
+
+      hash-code-loading-panel {
+        width: fit-content;
+      }
     `,
   ],
 })
