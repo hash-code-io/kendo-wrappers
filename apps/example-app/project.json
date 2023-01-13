@@ -7,17 +7,26 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
-        "allowedCommonJsDependencies": ["flat"],
+        "allowedCommonJsDependencies": [
+          "flat"
+        ],
         "outputPath": "dist/apps/example-app",
         "index": "apps/example-app/src/index.html",
         "main": "apps/example-app/src/main.ts",
         "polyfills": "apps/example-app/src/polyfills.ts",
         "tsConfig": "apps/example-app/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/example-app/src/favicon.svg", "apps/example-app/src/assets"],
-        "styles": ["apps/example-app/src/styles.scss"],
+        "assets": [
+          "apps/example-app/src/favicon.svg",
+          "apps/example-app/src/assets"
+        ],
+        "styles": [
+          "apps/example-app/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -74,17 +83,24 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/example-app/**/*.ts", "apps/example-app/**/*.html"]
+        "lintFilePatterns": [
+          "apps/example-app/**/*.ts",
+          "apps/example-app/**/*.html"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/example-app/jest.config.ts",
         "passWithNoTests": true
       }
     }
   },
-  "tags": ["type:app"]
+  "tags": [
+    "type:app"
+  ]
 }

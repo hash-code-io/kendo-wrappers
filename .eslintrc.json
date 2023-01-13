@@ -69,7 +69,6 @@
         // add extra @typescript-eslint rules not in the recommended setting
         "@typescript-eslint/consistent-type-definitions": "error", // from tslint interface-over-type-literal
         "@typescript-eslint/explicit-function-return-type": ["error"],
-        "@typescript-eslint/explicit-member-accessibility": ["error", { "accessibility": "explicit" }],
 
         "@typescript-eslint/no-shadow": [
           "error",

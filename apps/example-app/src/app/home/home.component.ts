@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLinkWithHref } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -17,6 +17,9 @@ import { RouterLinkWithHref } from '@angular/router';
       <li>
         <a routerLink="popup">Popup</a>
       </li>
+      <li>
+        <a routerLink="layout">Layout</a>
+      </li>
     </ul>
   `,
   styles: [
@@ -27,6 +30,6 @@ import { RouterLinkWithHref } from '@angular/router';
       }
     `,
   ],
-  imports: [RouterLinkWithHref],
+  imports: [RouterLink],
 })
 export class HomeComponent {}

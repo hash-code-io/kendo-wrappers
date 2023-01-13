@@ -1,8 +1,8 @@
 {
-  "name": "kendo-forms",
+  "name": "kendo-layout",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/kendo-forms/src",
+  "sourceRoot": "libs/kendo-layout/src",
   "prefix": "hash-code",
   "targets": {
     "build": {
@@ -11,15 +11,15 @@
         "{workspaceRoot}/dist/{projectRoot}"
       ],
       "options": {
-        "project": "libs/kendo-forms/ng-package.json"
+        "project": "libs/kendo-layout/ng-package.json"
       },
       "configurations": {
         "production": {
-          "tsConfig": "libs/kendo-forms/tsconfig.lib.prod.json",
+          "tsConfig": "libs/kendo-layout/tsconfig.lib.prod.json",
           "updateBuildableProjectDepsInPackageJson": false
         },
         "development": {
-          "tsConfig": "libs/kendo-forms/tsconfig.lib.json"
+          "tsConfig": "libs/kendo-layout/tsconfig.lib.json"
         }
       },
       "defaultConfiguration": "production"
@@ -30,7 +30,7 @@
         "{workspaceRoot}/coverage/{projectRoot}"
       ],
       "options": {
-        "jestConfig": "libs/kendo-forms/jest.config.ts",
+        "jestConfig": "libs/kendo-layout/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -38,8 +38,8 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "libs/kendo-forms/**/*.ts",
-          "libs/kendo-forms/**/*.html"
+          "libs/kendo-layout/**/*.ts",
+          "libs/kendo-layout/**/*.html"
         ]
       }
     },
@@ -56,6 +56,6 @@
   },
   "tags": [
     "type:ui",
-    "scope:forms"
+    "scope:layout"
   ]
 }
