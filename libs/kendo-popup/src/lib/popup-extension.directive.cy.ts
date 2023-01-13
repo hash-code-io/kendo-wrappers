@@ -3,7 +3,7 @@ import { PopupModule } from '@progress/kendo-angular-popup';
 import { MountConfig } from 'cypress/angular';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
-import { PopupExtensionDirective } from '../src';
+import { PopupExtensionDirective } from './popup-extension.directive';
 
 const blackBoxStyle = 'style="width: 50px; height: 50px; background-color: black"';
 
