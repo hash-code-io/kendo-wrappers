@@ -6,7 +6,7 @@ import { BehaviorSubject, debounceTime, distinctUntilChanged } from 'rxjs';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'hash-code-loading-spinner-panel',
+  selector: 'hash-code-loading-panel',
   standalone: true,
   template: `
     <div class="container-inner" [ngClass]="innerContainerClass">
@@ -71,12 +71,16 @@ import { BehaviorSubject, debounceTime, distinctUntilChanged } from 'rxjs';
   ],
   imports: [LoaderModule, NgIf, NgClass, AsyncPipe],
 })
-export class LoadingSpinnerPanelComponent {
+export class LoadingPanelComponent {
   @Input() loadingText = 'Loading...';
   @Input() loaderThemeColor: LoaderThemeColor = 'primary';
   @Input() loaderSize: LoaderSize = 'large';
   @Input() innerContainerClass = '';
   @Input() debounceTime = 75;
+
+  @Input() set loading(loading: boolean) {
+    this._loadingPanelVisibleSubject$.next(loading);
+  }
 
   private _loadingPanelVisibleSubject$ = new BehaviorSubject<boolean>(false);
   public loadingPanelVisible$ = this._loadingPanelVisibleSubject$.pipe(
