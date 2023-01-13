@@ -28,8 +28,7 @@ import { BehaviorSubject, debounceTime, distinctUntilChanged } from 'rxjs';
 
       .container-inner {
         display: flex;
-        flex-direction: column;
-
+        align-items: center;
         justify-content: center;
         position: relative;
       }
@@ -37,6 +36,7 @@ import { BehaviorSubject, debounceTime, distinctUntilChanged } from 'rxjs';
       /* Loader Panel Styles */
       .loading-panel {
         display: flex;
+        align-items: center;
         justify-content: center;
         width: 100%;
         height: 100%;
@@ -56,10 +56,7 @@ import { BehaviorSubject, debounceTime, distinctUntilChanged } from 'rxjs';
       }
       .loading-panel-wrapper {
         position: relative;
-        top: 50%;
         z-index: 2;
-        display: flex;
-        flex-direction: column;
       }
 
       .loading-panel-text {
